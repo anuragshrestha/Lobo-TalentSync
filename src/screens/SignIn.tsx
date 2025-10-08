@@ -43,6 +43,12 @@ const SignIn = () => {
         <TouchableOpacity style={styles.signinButton}>
           <Text style={styles.signinText}>Sign In</Text>
         </TouchableOpacity>
+        <View style={{flexDirection: 'row',paddingTop: 70 }}>
+            <Text style={{marginRight: 5, fontSize: 18, fontWeight: '500'}}>Don't have an account?</Text>
+            <TouchableOpacity>
+                <Text style={{fontSize: 18, fontWeight: '500', color:'#1788f1ff'}}>Sign Up</Text>
+            </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -67,7 +73,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    paddingBottom: '90%',
+    paddingBottom: '60%',
   },
   input: {
     borderWidth: 1,

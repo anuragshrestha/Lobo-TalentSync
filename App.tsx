@@ -1,8 +1,16 @@
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-} from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import TalentSyncLanding from './src/screens/TalentSyncLanding';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SignIn from './src/screens/SignIn';
+
+type RootStackParamList = {
+  Landing: undefined;
+  SignIn: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -10,11 +18,15 @@ function App() {
   return (
     <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <TalentSyncLanding/>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Landing">
+          <Stack.Screen name="Landing" component={TalentSyncLanding} options={{headerShown: false}}/>
+          <Stack.Screen name="SignIn" component={SignIn}options={{headerShown: false}}/>
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {

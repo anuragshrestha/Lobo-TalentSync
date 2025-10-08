@@ -1,7 +1,11 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function TalentSyncLanding() {
+
+  const navigation = useNavigation<any>();
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       {/* Logo + Header */}
@@ -53,7 +57,7 @@ export default function TalentSyncLanding() {
 
       {/* Buttons */}
       <View style={styles.buttonGroup}>
-        <TouchableOpacity style={styles.studentBtn}>
+        <TouchableOpacity style={styles.studentBtn} onPress={() => navigation.navigate('SignIn')}>
           <Text style={styles.studentText}>I'm a Student →</Text>
         </TouchableOpacity>
 
@@ -139,19 +143,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     borderRadius: 12,
     marginBottom: 12,
-    minWidth: 100,
-    cursor: 'pointer',
-  
+    width: '80%',
+  alignItems: 'center',  
   },
   studentText: { color: '#fff', fontSize: 16, fontWeight: '600' },
   employerBtn: {
     borderWidth: 1,
     borderColor: '#ccc',
     paddingVertical: 14,
-    paddingHorizontal: 40,
+    paddingHorizontal: 30,
     borderRadius: 12,
-     minWidth: 100,
-     cursor: 'pointer'
+      width: '80%',
+  alignItems: 'center',  
   },
   employerText: { color: '#111', fontSize: 16, fontWeight: '600' },
   statsRow: {
