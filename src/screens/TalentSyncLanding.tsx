@@ -44,7 +44,7 @@ export default function TalentSyncLanding() {
           Apply to jobs with a simple swipe using your uploaded resume
         </Text>
       </View>
-
+{/* 
       <View style={styles.feature}>
         <View style={styles.featureIconPurple}>
           <Text style={styles.iconText}>👤</Text>
@@ -53,7 +53,7 @@ export default function TalentSyncLanding() {
         <Text style={styles.featureDesc}>
           Get inside look at company culture through employee stories and videos
         </Text>
-      </View>
+      </View> */}
 
       {/* Buttons */}
       <View style={styles.buttonGroup}>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     maxWidth: 340,
   },
-  feature: { alignItems: 'center', marginTop: 36, paddingHorizontal: 12 },
+  feature: { alignItems: 'center', marginTop: 10, paddingHorizontal: 12 },
   featureIconBlue: {
     backgroundColor: '#dbeafe',
     borderRadius: 50,

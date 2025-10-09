@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import {
   View,
@@ -12,6 +13,7 @@ const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const navigation = useNavigation<any>();
   return (
     <View style={styles.container}>
       <Image
@@ -45,7 +47,7 @@ const SignIn = () => {
         </TouchableOpacity>
         <View style={{flexDirection: 'row',paddingTop: 70 }}>
             <Text style={{marginRight: 5, fontSize: 18, fontWeight: '500'}}>Don't have an account?</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('StudentSignUp')}>
                 <Text style={{fontSize: 18, fontWeight: '500', color:'#1788f1ff'}}>Sign Up</Text>
             </TouchableOpacity>
         </View>

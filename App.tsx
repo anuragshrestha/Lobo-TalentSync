@@ -4,10 +4,12 @@ import TalentSyncLanding from './src/screens/TalentSyncLanding';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignIn from './src/screens/SignIn';
+import StudentSignUp from './src/screens/StudentSignUp';
 
 type RootStackParamList = {
   Landing: undefined;
   SignIn: undefined;
+  StudentSignUp: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -21,7 +23,8 @@ function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Landing">
           <Stack.Screen name="Landing" component={TalentSyncLanding} options={{headerShown: false}}/>
-          <Stack.Screen name="SignIn" component={SignIn}options={{headerShown: false}}/>
+          <Stack.Screen name="SignIn" component={SignIn}  options={{headerShown: false}}/>
+          <Stack.Screen name='StudentSignUp' component={StudentSignUp}  options={{headerShown: false}}/>
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
