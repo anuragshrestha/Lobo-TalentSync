@@ -44,24 +44,13 @@ export default function TalentSyncLanding() {
           Apply to jobs with a simple swipe using your uploaded resume
         </Text>
       </View>
-{/* 
-      <View style={styles.feature}>
-        <View style={styles.featureIconPurple}>
-          <Text style={styles.iconText}>👤</Text>
-        </View>
-        <Text style={styles.featureTitle}>Company Stories</Text>
-        <Text style={styles.featureDesc}>
-          Get inside look at company culture through employee stories and videos
-        </Text>
-      </View> */}
-
       {/* Buttons */}
       <View style={styles.buttonGroup}>
         <TouchableOpacity style={styles.studentBtn} onPress={() => navigation.navigate('SignIn')}>
           <Text style={styles.studentText}>I'm a Student →</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.employerBtn}>
+        <TouchableOpacity style={styles.employerBtn} onPress={() => navigation.navigate('EmployerSignin')}>
           <Text style={styles.employerText}>I'm an Employer →</Text>
         </TouchableOpacity>
       </View>

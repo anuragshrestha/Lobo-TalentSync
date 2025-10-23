@@ -16,6 +16,14 @@ const SignIn = () => {
   const navigation = useNavigation<any>();
   return (
     <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => navigation.navigate('Landing')}
+        accessibilityRole="button"
+        accessibilityLabel="Go back to landing"
+      >
+        <Text style={styles.backText}>←</Text>
+      </TouchableOpacity>
       <Image
         source={require('../assests/LoboImage.png')}
         style={styles.logo}
@@ -63,6 +71,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
+  },
+  backButton: {
+    position: 'absolute',
+    top: 50,
+    left: 20,
+    padding: 8,
+    zIndex: 10,
+  },
+  backText: {
+    fontSize: 28,
+    color: '#111',
   },
   logo: {
     width: 140,
