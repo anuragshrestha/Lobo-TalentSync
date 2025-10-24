@@ -9,7 +9,7 @@ import {
   Text,
 } from 'react-native';
 
-const SignIn = () => {
+const StudentSignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -25,7 +25,7 @@ const SignIn = () => {
         <Text style={styles.backText}>←</Text>
       </TouchableOpacity>
       <Image
-        source={require('../assests/LoboImage.png')}
+        source={require('../../assests/LoboImage.png')}
         style={styles.logo}
         resizeMode="contain"
       />
@@ -50,7 +50,7 @@ const SignIn = () => {
           autoCorrect={false}
           style={styles.input}
         />
-        <TouchableOpacity style={styles.signinButton}>
+        <TouchableOpacity style={styles.signinButton} onPress={() => navigation.navigate('StudentTabs')}>
           <Text style={styles.signinText}>Sign In</Text>
         </TouchableOpacity>
         <View style={{flexDirection: 'row',paddingTop: 70 }}>
@@ -64,7 +64,7 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default StudentSignIn;
 
 const styles = StyleSheet.create({
   container: {

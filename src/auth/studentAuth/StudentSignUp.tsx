@@ -21,7 +21,7 @@ const StudentSignUp = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../assests/LoboImage.png')}
+        source={require('../../assests/LoboImage.png')}
         style={styles.logo}
         resizeMode="contain"
       />

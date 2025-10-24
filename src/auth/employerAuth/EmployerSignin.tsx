@@ -25,7 +25,7 @@ const EmployerSignin = () => {
         <Text style={styles.backText}>←</Text>
       </TouchableOpacity>
       <Image
-        source={require('../assests/LoboImage.png')}
+        source={require('../../assests/LoboImage.png')}
         style={styles.logo}
         resizeMode="contain"
       />

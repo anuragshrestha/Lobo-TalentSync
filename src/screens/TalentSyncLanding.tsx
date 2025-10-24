@@ -46,7 +46,7 @@ export default function TalentSyncLanding() {
       </View>
       {/* Buttons */}
       <View style={styles.buttonGroup}>
-        <TouchableOpacity style={styles.studentBtn} onPress={() => navigation.navigate('SignIn')}>
+        <TouchableOpacity style={styles.studentBtn} onPress={() => navigation.navigate('StudentSignIn')}>
           <Text style={styles.studentText}>I'm a Student →</Text>
         </TouchableOpacity>
 
