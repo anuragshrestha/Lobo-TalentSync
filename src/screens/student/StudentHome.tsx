@@ -1,18 +1,27 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { posts } from '../../auth/utils/PostCard';
+import HomePostCard from '../../components/HomePostCard';
 
 const StudentHome = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Home</Text>
-    </View>
+    <ScrollView contentContainerStyle={styles.container}>
+      {posts.map((post, index) => (
+        <HomePostCard key={index} post={post} />
+      ))}
+    </ScrollView>
   );
 };
 
 export default StudentHome;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#fff' },
+  container: {
+    flexGrow: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    paddingTop: '20%'
+  },
   text: { fontSize: 20, fontWeight: '600' },
 });
-

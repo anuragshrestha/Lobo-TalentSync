@@ -9,6 +9,7 @@ import EmployerSignUp from './src/auth/employerAuth/EmployerSignUp';
 import StudentTabs from './src/screens/student/StudentTabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import StudentSignIn from './src/auth/studentAuth/StudentSignIn';
+import StudentApplication from './src/screens/student/StudentApplication';
 
 type RootStackParamList = {
   Landing: undefined;
@@ -17,6 +18,7 @@ type RootStackParamList = {
   EmployerSignin: undefined;
   EmployerSignUp: undefined;
   StudentTabs: undefined;
+  StudentApplication: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -37,6 +39,7 @@ function App() {
           <Stack.Screen name='EmployerSignin' component={EmployerSignin}  options={{headerShown: false}}/>
           <Stack.Screen name='EmployerSignUp' component={EmployerSignUp}  options={{headerShown: false}}/>
           <Stack.Screen name='StudentTabs' component={StudentTabs} options={{headerShown: false}} />
+          <Stack.Screen name='StudentApplication' component={StudentApplication} options={{headerShown: false}}/>
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

@@ -74,7 +74,7 @@ const StudentSignUp = () => {
           secureTextEntry
           style={styles.input}
         />
-        <TouchableOpacity style={styles.account}>
+        <TouchableOpacity style={styles.account} onPress={() => navigation.navigate('StudentApplication')}>
           <Text
             style={{ fontSize: 20, fontWeight: 'bold', textAlign: 'center' }}
           >
