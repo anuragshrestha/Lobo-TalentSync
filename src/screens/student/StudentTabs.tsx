@@ -5,6 +5,7 @@ import StudentHome from './StudentHome';
 import StudentChat from './StudentChat';
 import StudentHistory from './StudentHistory';
 import StudentProfile from './StudentProfile';
+import StudentJob from './StudentJob';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,6 +21,8 @@ const StudentTabs = () => {
 
           if (route.name === 'Home') {
             iconName = focused ? 'home' : 'home-outline';
+          } else if(route.name === 'Job'){
+             iconName = focused ? 'briefcase' : 'briefcase-outline'
           } else if (route.name === 'Chat') {
             iconName = focused ? 'chatbubble-ellipses' : 'chatbubble-ellipses-outline';
           } else if (route.name === 'History') {
@@ -33,6 +36,7 @@ const StudentTabs = () => {
       })}
     >
       <Tab.Screen name="Home" component={StudentHome} />
+      <Tab.Screen name='Job' component={StudentJob}/>
       <Tab.Screen name="Chat" component={StudentChat} />
       <Tab.Screen name="History" component={StudentHistory} />
       <Tab.Screen name="Profile" component={StudentProfile} />
