@@ -10,6 +10,7 @@ type Post = {
   likes: number;
   comments: number;
   shares: number;
+  time: string;
 };
 
 const screenWidth = Dimensions.get('window').width;
@@ -40,14 +41,16 @@ const HomePostCard = ({ post }: { post: Post }) => {
             flexDirection: 'row',
             alignItems: 'center',
             gap: 8,
-          
           }}
         >
           <Image
             source={{ uri: post.avatarUrl }}
             style={{ width: 40, height: 40, borderRadius: 20 }}
           />
-          <Text style={{ fontSize: 18, fontWeight: '600' }}>{post.name}</Text>
+          <View>
+            <Text style={{ fontSize: 18, fontWeight: '600' }}>{post.name}</Text>
+            <Text style={{ fontSize: 12, fontWeight: '300' }}>{post.time}</Text>
+          </View>
         </View>
 
         <Ionicons name="ellipsis-horizontal" size={18} color="#444" />
@@ -73,7 +76,7 @@ const HomePostCard = ({ post }: { post: Post }) => {
             borderRadius: 10,
             marginBottom: 10,
           }}
-          resizeMode='cover'
+          resizeMode="cover"
         />
       )}
 
@@ -83,7 +86,7 @@ const HomePostCard = ({ post }: { post: Post }) => {
           justifyContent: 'flex-start',
           alignItems: 'center',
           marginTop: 4,
-          gap: 20
+          gap: 20,
         }}
       >
         <View style={{ flexDirection: 'row', gap: 4, alignItems: 'center' }}>
@@ -91,11 +94,11 @@ const HomePostCard = ({ post }: { post: Post }) => {
           <Text style={{ color: '#444', fontSize: 13 }}>{post.likes}</Text>
         </View>
         <View style={{ flexDirection: 'row', gap: 4, alignItems: 'center' }}>
-          <Ionicons name="chatbubble-outline"size={20} color='#444' />
+          <Ionicons name="chatbubble-outline" size={20} color="#444" />
           <Text>{post.comments}</Text>
         </View>
         <View style={{ flexDirection: 'row', gap: 4, alignItems: 'center' }}>
-          <Ionicons name="arrow-redo-outline" size={20} color='#444' />
+          <Ionicons name="arrow-redo-outline" size={20} color="#444" />
           <Text>{post.shares}</Text>
         </View>
       </View>

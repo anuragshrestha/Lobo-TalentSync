@@ -7,6 +7,7 @@ photoUrl: 'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=for
 likes: 128,
 comments: 12,
 shares: 4,
+time: '1 hour ago'
 },
 {
 name: 'Liam Chen',
@@ -15,6 +16,7 @@ statusText: 'Just wrapped a React Native prototype. Learned a ton.',
 likes: 86,
 comments: 7,
 shares: 2,
+time: '1 day ago'
 },
 {
 name: 'Sofia Martinez',
@@ -24,6 +26,7 @@ photoUrl: 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=for
 likes: 204,
 comments: 18,
 shares: 6,
+time: '1 day ago'
 },
 {
 name: 'Noah Patel',
@@ -32,6 +35,7 @@ statusText: 'Looking for entry-level roles in data analytics.',
 likes: 59,
 comments: 9,
 shares: 1,
+time: '5 day ago'
 },
 {
 name: 'Emma Rossi',
@@ -41,6 +45,7 @@ photoUrl: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=for
 likes: 143,
 comments: 21,
 shares: 5,
+time: '4 hrs ago'
 },
 {
 name: 'Ethan Williams',
@@ -49,6 +54,7 @@ statusText: 'Practicing system design questions this week.',
 likes: 37,
 comments: 3,
 shares: 0,
+time: '4 hrs ago'
 },
 {
 name: 'Mia Johnson',
@@ -58,6 +64,7 @@ photoUrl: 'https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=for
 likes: 221,
 comments: 34,
 shares: 9,
+time: '1 week ago'
 },
 {
 name: 'Oliver Smith',
@@ -66,6 +73,7 @@ statusText: 'Refactoring my resume based on recruiter feedback.',
 likes: 64,
 comments: 6,
 shares: 1,
+time: '1 week ago'
 },
 {
 name: 'Isabella Garcia',
@@ -75,6 +83,7 @@ photoUrl: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=for
 likes: 178,
 comments: 25,
 shares: 7,
+time: '4 hrs ago'
 },
 {
 name: 'Lucas Nguyen',
@@ -83,5 +92,6 @@ statusText: 'Learning TypeScript generics.',
 likes: 48,
 comments: 5,
 shares: 1,
+time: '10 hrs ago'
 },
 ];
