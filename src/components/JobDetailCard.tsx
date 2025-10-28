@@ -202,7 +202,7 @@ const JobDetailCard = ({ job }: { job: Job }) => {
         <Pressable style={styles.textRecuiter}>
           <Ionicons name="chatbubble" size={16} color="#e9e5e5ff" />
           <Text style={{ fontSize: 16, color: '#e9e5e5ff' }}>
-            Text Recuiter
+            Text Employer
           </Text>
         </Pressable>
       </View>
@@ -364,14 +364,14 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
   },
   submitButton: {
-    backgroundColor: '#2563EB',
+    backgroundColor: '#306eeaff',
     paddingVertical: 5,
     borderRadius: 15,
     paddingHorizontal: 8,
     maxWidth: '40%',
   },
   textRecuiter: {
-    backgroundColor: '#04225eff',
+    backgroundColor: '#306eeaff',
     paddingVertical: 5,
     paddingHorizontal: 8,
     borderRadius: 15,
