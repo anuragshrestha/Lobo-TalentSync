@@ -11,6 +11,18 @@ export type Job = {
   minRequirements: [string, string, string, ...string[]];
 };
 
+
+export type AppliedJob = {
+  id: string;
+  title: string;
+  company: string;
+  logoUrl: string;
+  location?: string;
+  employmentType?: 'Full-time' | 'Part-time' | 'Contract' | 'Internship';
+  appliedAt: string;
+  numOfEmployees: string;
+};
+
 export const jobs: Job[] = [
   {
     id: 'sandia-cyber-1',
@@ -83,5 +95,29 @@ export const jobs: Job[] = [
       'Unit/UI testing and debugging',
       'App performance & accessibility',
     ],
+  },
+];
+
+
+export const AppliedJobs: AppliedJob[] = [
+  {
+    id: 'intel-ai-1',
+    title: 'AI Engineer',
+    company: 'Intel',
+    logoUrl: 'https://logo.clearbit.com/intel.com',
+    appliedAt: '2025-10-25T15:40:00.000Z',
+    location: 'Hillsboro, OR',
+    employmentType: 'Full-time',
+    numOfEmployees: '10000+',
+  },
+  {
+    id: 'microsoft-se-1',
+    title: 'Software Engineer',
+    company: 'Microsoft',
+    logoUrl: 'https://logo.clearbit.com/microsoft.com',
+    appliedAt: '2025-10-20T12:00:00.000Z',
+    location: 'Redmond, WA',
+    employmentType: 'Full-time',
+    numOfEmployees: '10000+',
   },
 ];
