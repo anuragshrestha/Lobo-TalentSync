@@ -6,6 +6,9 @@ import {
   StyleSheet,
   Pressable,
   Dimensions,
+  Alert,
+  Modal,
+  ActivityIndicator,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Job } from '../auth//utils/JobCard';
@@ -22,9 +25,55 @@ function timeAgo(iso: string) {
   return `${d}d ago`;
 }
 
+const PROGRESS_STEPS = [
+  'Updating your resume based on job description…',
+  'Updating your cover letter based on your cover letter…',
+  'Sending application…',
+] as const;
+
+const sleep = (ms: number): Promise<void> =>
+  new Promise<void>(res => setTimeout(res, ms));
+
 const JobDetailCard = ({ job }: { job: Job }) => {
   const [expanded, setExpanded] = useState(false);
   const [lineCount, setLineCount] = useState(0);
+  const [progessView, setProgressView] = useState(false);
+  const [activeStep, setActiveStep] = useState<number>(0);
+  const [done, setDone] = useState(false);
+
+  const runSubmitFlow = async () => {
+    console.log('inside run submit');
+
+    setProgressView(true);
+    setActiveStep(0);
+    setDone(false);
+
+    for (let i = 0; i < PROGRESS_STEPS.length; i++) {
+      console.log('printing i: ', i);
+
+      setActiveStep(i);
+      await sleep(5000);
+    }
+
+    setDone(true);
+    await sleep(3000);
+
+    setProgressView(false);
+    setActiveStep(0);
+    setDone(false);
+  };
+
+  const submitJob = () => {
+    Alert.alert(
+      'Confrim Application',
+      'Do you want to Apply for this Job?',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        { text: 'Submit', style: 'default', onPress: runSubmitFlow },
+      ],
+      { cancelable: true },
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -145,7 +194,7 @@ const JobDetailCard = ({ job }: { job: Job }) => {
 
       {/* Apply Button */}
       <View style={styles.submitButtonView}>
-        <Pressable style={styles.submitButton}>
+        <Pressable style={styles.submitButton} onPress={submitJob}>
           <Text style={{ fontSize: 16, color: '#e9e5e5ff' }}>
             Submit Application
           </Text>
@@ -157,6 +206,70 @@ const JobDetailCard = ({ job }: { job: Job }) => {
           </Text>
         </Pressable>
       </View>
+
+      {/** Status Modal */}
+      <Modal
+        visible={progessView}
+        transparent
+        animationType="fade"
+        onRequestClose={() => {}}
+      >
+        <View style={styles.modalView}>
+          <View style={styles.innerModalView}>
+            {!done ? (
+              <>
+                <ActivityIndicator size="large" />
+                <Text style={styles.submitAppText}>Submitting Application</Text>
+                <View style={{ gap: 8, paddingTop: 10 }}>
+                  {PROGRESS_STEPS.map((text, index) => (
+                    <View
+                      key={index}
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        gap: 8,
+                      }}
+                    >
+                      <Ionicons
+                        name={
+                          index < activeStep
+                            ? 'checkmark-circle'
+                            : index === activeStep
+                            ? 'radio-button-on'
+                            : 'ellipse-outline'
+                        }
+                        size={18}
+                        color={index < activeStep ? '#2563EB' : '#999'}
+                      />
+                      <Text
+                        style={[
+                          styles.stepText,
+                          index === activeStep && {
+                            fontWeight: '700',
+                            color: '#111',
+                          },
+                          index < activeStep && { color: '#111' },
+                        ]}
+                      >
+                        {text}
+                      </Text>
+                    </View>
+                  ))}
+                </View>
+              </>
+            ) : (
+              <View style={{ alignItems: 'center', padding: 18 }}>
+                <Ionicons name="checkmark-circle" size={22} color="#16a34a" />
+                <Text
+                  style={{ fontSize: 18, fontWeight: '600', color: '#16a34a' }}
+                >
+                  Application Sent!
+                </Text>
+              </View>
+            )}
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -279,5 +392,30 @@ const styles = StyleSheet.create({
     zIndex: -1,
     left: 0,
     right: 0,
+  },
+  stepText: {
+    fontSize: 16,
+    color: '#444',
+    flexShrink: 1,
+  },
+  modalView: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.22)',
+    padding: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  innerModalView: {
+    width: '100%',
+    borderRadius: 20,
+    backgroundColor: '#b9f2f7ff',
+    padding: 18,
+  },
+  submitAppText: {
+    fontSize: 18,
+    fontWeight: '700',
+    marginTop: 12,
+    marginBottom: 6,
+    color: '#111',
   },
 });
