@@ -295,7 +295,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 50,
     height: 50,
-    borderRadius: 25,
+    borderRadius: 35,
   },
   description: { fontSize: 14, lineHeight: 20, color: '#222' },
   companyText: {
