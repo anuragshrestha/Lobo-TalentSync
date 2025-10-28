@@ -1,12 +1,19 @@
-import { View, Image, Text, Dimensions } from 'react-native';
+import { View, Image, Text, Dimensions, ImageSourcePropType } from 'react-native';
 import { posts } from '../auth/utils/PostCard';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useEffect } from 'react';
 
 type Post = {
   name: string;
-  avatarUrl: string;
+  // Remote avatar support
+  avatarUrl?: string;
+  // Local avatar support
+  avatar?: ImageSourcePropType;
   statusText: string;
+  // Remote photo support
   photoUrl?: string;
+  // Local photo support
+  photo?: ImageSourcePropType;
   likes: number;
   comments: number;
   shares: number;
@@ -15,7 +22,18 @@ type Post = {
 
 const screenWidth = Dimensions.get('window').width;
 
+
 const HomePostCard = ({ post }: { post: Post }) => {
+
+
+  const isLocalPhoto = !!post.photo;
+  const localPhotoMeta = post.photo
+    ? Image.resolveAssetSource(post.photo)
+    : undefined;
+  const photoAspectRatio = localPhotoMeta
+    ? localPhotoMeta.width / localPhotoMeta.height
+    : undefined;
+
   return (
     <View
       style={{
@@ -43,10 +61,12 @@ const HomePostCard = ({ post }: { post: Post }) => {
             gap: 8,
           }}
         >
-          <Image
-            source={{ uri: post.avatarUrl }}
-            style={{ width: 40, height: 40, borderRadius: 20 }}
-          />
+          {(post.avatar || post.avatarUrl) && (
+            <Image
+              source={post.avatar ?? { uri: post.avatarUrl as string }}
+              style={{ width: 40, height: 40, borderRadius: 20 }}
+            />
+          )}
           <View>
             <Text style={{ fontSize: 18, fontWeight: '600' }}>{post.name}</Text>
             <Text style={{ fontSize: 12, fontWeight: '300' }}>{post.time}</Text>
@@ -67,16 +87,17 @@ const HomePostCard = ({ post }: { post: Post }) => {
       >
         {post.statusText}
       </Text>
-      {post.photoUrl && (
+      {(post.photo || post.photoUrl) && (
         <Image
-          source={{ uri: post.photoUrl }}
+          source={post.photo ?? { uri: post.photoUrl as string }}
           style={{
             width: '100%',
-            height: 280,
+            height: isLocalPhoto ? undefined : 280,
+            aspectRatio: isLocalPhoto ? photoAspectRatio : undefined,
             borderRadius: 10,
             marginBottom: 10,
           }}
-          resizeMode="cover"
+          resizeMode={isLocalPhoto ? 'contain' : 'cover'}
         />
       )}
 

@@ -52,7 +52,7 @@ const JobDetailCard = ({ job }: { job: Job }) => {
       console.log('printing i: ', i);
 
       setActiveStep(i);
-      await sleep(5000);
+      await sleep(3000);
     }
 
     setDone(true);
@@ -408,7 +408,7 @@ const styles = StyleSheet.create({
   innerModalView: {
     width: '100%',
     borderRadius: 20,
-    backgroundColor: '#b9f2f7ff',
+    backgroundColor: '#DBEAFE',
     padding: 18,
   },
   submitAppText: {
