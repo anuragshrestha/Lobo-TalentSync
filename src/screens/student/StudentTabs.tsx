@@ -14,7 +14,7 @@ const StudentTabs = () => {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
-        tabBarActiveTintColor: '#1788f1ff',
+        tabBarActiveTintColor: '#111',
         tabBarInactiveTintColor: '#888',
         tabBarIcon: ({ focused, color, size }) => {
           let iconName: string = 'ellipse-outline';

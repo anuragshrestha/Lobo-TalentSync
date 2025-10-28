@@ -85,7 +85,7 @@ const StudentSignUp = () => {
           <Text style={{ marginRight: 5, fontSize: 18, fontWeight: '500' }}>
             Already have an account?
           </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+          <TouchableOpacity onPress={() => navigation.navigate('StudentSignIn')}>
             <Text
               style={{ fontSize: 18, fontWeight: '500', color: '#1788f1ff' }}
             >
