@@ -264,7 +264,7 @@ const StudentApplication = () => {
       {/* Submit */}
       <TouchableOpacity
         style={[styles.primaryButton, { alignSelf: 'flex-start', paddingHorizontal: 16, marginTop: 24 }]}
-        onPress={() => navigation.navigate('StudentTabs')}
+        onPress={() => navigation.navigate('StudentSignIn')}
       >
         <Text style={styles.primaryButtonText}>Save</Text>
       </TouchableOpacity>

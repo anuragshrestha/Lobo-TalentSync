@@ -50,7 +50,7 @@ const EmployerSignin = () => {
           autoCorrect={false}
           style={styles.input}
         />
-        <TouchableOpacity style={styles.signinButton}>
+        <TouchableOpacity style={styles.signinButton} onPress={() => navigation.navigate('EmployerTabs')}>
           <Text style={styles.signinText}>Sign In</Text>
         </TouchableOpacity>
         <View style={{flexDirection: 'row',paddingTop: 70 }}>

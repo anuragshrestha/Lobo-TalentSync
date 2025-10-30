@@ -8,6 +8,8 @@ import {
   Image,
   TouchableOpacity,
   FlatList,
+  Modal,
+  Pressable,
 } from 'react-native';
 
 const EmployerSignUp = () => {
@@ -17,6 +19,7 @@ const EmployerSignUp = () => {
   const [password, setPassword] = useState('');
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   const companies = useMemo(
     () => [
@@ -41,13 +44,13 @@ const EmployerSignUp = () => {
       'Uber',
       'Airbnb',
     ],
-    []
+    [],
   );
 
   const filteredCompanies = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     if (!q) return companies;
-    return companies.filter((c) => c.toLowerCase().includes(q));
+    return companies.filter(c => c.toLowerCase().includes(q));
   }, [searchQuery, companies]);
 
   const navigation = useNavigation<any>();
@@ -68,7 +71,11 @@ const EmployerSignUp = () => {
             activeOpacity={0.7}
             style={[styles.input, styles.selector]}
           >
-            <Text style={companyName ? styles.selectorText : styles.selectorPlaceholder}>
+            <Text
+              style={
+                companyName ? styles.selectorText : styles.selectorPlaceholder
+              }
+            >
               {companyName || 'Select company'}
             </Text>
             <Text style={styles.selectorIcon}>▾</Text>
@@ -89,7 +96,7 @@ const EmployerSignUp = () => {
                 <FlatList
                   data={filteredCompanies}
                   keyboardShouldPersistTaps="handled"
-                  keyExtractor={(item) => item}
+                  keyExtractor={item => item}
                   renderItem={({ item }) => (
                     <TouchableOpacity
                       style={styles.dropdownItem}
@@ -116,7 +123,10 @@ const EmployerSignUp = () => {
                   </Text>
                 </TouchableOpacity>
               ) : null}
-              <TouchableOpacity style={styles.closeDropdown} onPress={() => setDropdownOpen(false)}>
+              <TouchableOpacity
+                style={styles.closeDropdown}
+                onPress={() => setDropdownOpen(false)}
+              >
                 <Text style={styles.closeDropdownText}>Close</Text>
               </TouchableOpacity>
             </View>
@@ -152,7 +162,10 @@ const EmployerSignUp = () => {
           secureTextEntry
           style={styles.input}
         />
-        <TouchableOpacity style={styles.account}>
+        <TouchableOpacity
+          style={styles.account}
+          onPress={() => setShowModal(true)}
+        >
           <Text
             style={{ fontSize: 20, fontWeight: 'bold', textAlign: 'center' }}
           >
@@ -163,7 +176,9 @@ const EmployerSignUp = () => {
           <Text style={{ marginRight: 5, fontSize: 18, fontWeight: '500' }}>
             Already have an account?
           </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('EmployerSignin')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('EmployerSignin')}
+          >
             <Text
               style={{ fontSize: 18, fontWeight: '500', color: '#1788f1ff' }}
             >
@@ -171,6 +186,59 @@ const EmployerSignUp = () => {
             </Text>
           </TouchableOpacity>
         </View>
+
+        <Modal
+          visible={showModal}
+          transparent
+          animationType="fade"
+          onRequestClose={() => {}}
+        >
+          <View style={styles.modalView}>
+            <View style={styles.innerModalView}>
+              <Text style={styles.congratsText}>Congratulation for Creating Employer Account</Text>
+              <Text
+                style={{ fontSize: 14, fontWeight: '400', marginBottom: 5 }}
+              >
+                Your Account will be reviewed by UNM Carreer Service team. We
+                will notify you once there is update.
+              </Text>
+              <Text
+                style={{
+                  fontSize: 18,
+                  fontWeight: '500',
+                  color: '#ee5252ff',
+                  textAlign: 'center',
+                  marginBottom: 5,
+                }}
+              >
+                Go Lobos🤘
+              </Text>
+              <View style={{ alignItems: 'center' }}>
+                <Pressable
+                  style={{
+                    borderRadius: 12,
+                    backgroundColor: '#1249bfff',
+                    paddingVertical: 10,
+                    paddingHorizontal: 8,
+                    maxWidth: '25%',
+                  }}
+                  onPress={() => setShowModal(false)}
+                >
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      textAlign: 'center',
+                      color: 'white',
+                      fontWeight: 'bold',
+                    }}
+                  >
+                    Confrim
+                  </Text>
+                </Pressable>
+              </View>
+            </View>
+          </View>
+        </Modal>
       </View>
     </View>
   );
@@ -221,7 +289,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 16,
     width: '80%',
-     maxWidth: 300,
+    maxWidth: 300,
     margin: 7,
   },
   selector: {
@@ -246,7 +314,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 7,
     right: 7,
-    top: 58, /* sits over content, not pushing it */
+    top: 58 /* sits over content, not pushing it */,
     borderWidth: 1,
     borderColor: '#ddd',
     backgroundColor: 'white',
@@ -295,5 +363,25 @@ const styles = StyleSheet.create({
     width: '80%',
     maxWidth: 300,
     margin: 7,
+  },
+  modalView: {
+    flex: 1,
+    padding: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0.22)',
+  },
+  innerModalView: {
+    width: '100%',
+    backgroundColor: '#fff',
+    borderRadius: 20,
+    padding: 18,
+  },
+  congratsText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#078609ff',
+    marginBottom: 5,
+    textAlign: 'center',
   },
 });
