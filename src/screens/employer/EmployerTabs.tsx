@@ -42,7 +42,9 @@ const EmployerTabs = () => {
         headerShown: false,
         tabBarStyle: {
           backgroundColor: BG,
-          borderTopWidth: 0,
+          borderTopWidth: 1,
+          borderTopColor: '#8a8d8a90',
+          paddingTop: 5,
           height: 85,
         },
         tabBarLabelStyle: {

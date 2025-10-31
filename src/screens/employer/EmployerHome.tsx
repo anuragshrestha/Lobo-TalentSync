@@ -8,8 +8,10 @@ import {
   Image,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { recentActivities } from '../../auth/utils/RecentActivity';
-
+import {
+  recentActivities,
+  topCandidates,
+} from '../../auth/utils/RecentActivity';
 
 const EmployerHome = () => {
   const [isRecentActivity, setIsRecentActivity] = useState(true);
@@ -106,28 +108,21 @@ const EmployerHome = () => {
         >
           <View style={{ paddingHorizontal: 12, width: '100%' }}>
             {recentActivities.map((activity, index) => (
-              <View
-                key={index}
-                style={style.recentView}
-              >
-                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', minWidth: 0 }}>
+              <View key={index} style={style.recentView}>
+                <View
+                  style={{
+                    flex: 1,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    minWidth: 0,
+                  }}
+                >
                   <Image
                     source={{ uri: activity.avatarUrl }}
                     style={style.avtarImage}
                   />
                   <View style={{ flex: 1, minWidth: 0, marginLeft: 12 }}>
-                    <Text
-                      style={{
-                        fontSize: 16,
-                        color: 'white',
-                        fontWeight: '400',
-                        lineHeight: 22,
-                        flexShrink: 1,
-                        marginBottom: 4,
-                      }}
-                      numberOfLines={2}
-                      ellipsizeMode="tail"
-                    >
+                    <Text style={style.description} numberOfLines={2} ellipsizeMode="tail">
                       {activity.description}
                     </Text>
                     <Text style={{ fontSize: 14, color: 'gray' }}>
@@ -156,7 +151,52 @@ const EmployerHome = () => {
           </View>
         </View>
       ) : (
-        <View></View>
+        //  {/** Top Candidates */}
+        <View
+          style={{ width: '90%', alignSelf: 'center', paddingTop: 12, gap: 12 }}
+        >
+          {topCandidates.map(c => (
+            <View key={c.id} style={style.card}>
+              {/* Left: avatar */}
+              <Image source={{ uri: c.avatarUrl }} style={style.avatar} />
+
+              {/* Middle: text */}
+              <View style={style.mid}>
+                <Text style={style.name} numberOfLines={1}>
+                  {c.name}
+                </Text>
+                <Text style={style.role} numberOfLines={1}>
+                  {c.role}
+                </Text>
+
+                {/* tags */}
+                <View style={style.tagsRow}>
+                  {c.tags.slice(0, 4).map((t, i) => (
+                    <View key={i} style={style.tag}>
+                      <Text style={style.tagText}>{t}</Text>
+                    </View>
+                  ))}
+                </View>
+              </View>
+
+              {/* Right: match + button */}
+              <View style={style.right}>
+                <View style={style.matchPill}>
+                  <Text style={style.matchText}>{c.match}%</Text>
+                  <Text style={style.matchSub}>Match</Text>
+                </View>
+                <Pressable
+                  style={style.connectBtn}
+                  onPress={() => {
+                    /* connect */
+                  }}
+                >
+                  <Text style={style.connectText}>Connect</Text>
+                </Pressable>
+              </View>
+            </View>
+          ))}
+        </View>
       )}
     </ScrollView>
   );
@@ -260,16 +300,112 @@ const style = StyleSheet.create({
     borderRadius: 22,
     marginRight: 1,
   },
-  recentView:{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  paddingVertical: 14,
-                  borderBottomWidth: 1,
-                  borderBottomColor: '#1E293B',
-                  width: '100%',
-                  minWidth: 0,
-                }
+  recentView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: '#1E293B',
+    width: '100%',
+    minWidth: 0,
+  },
+  card: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 12,
+    padding: 12,
+    borderRadius: 14,
+    backgroundColor: '#020409ff',
+    borderWidth: 1,
+    borderColor: '#1E293B',
+  },
+  avatar: {
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+  },
+  mid: {
+    flex: 1,
+    minWidth: 0,
+    gap: 4,
+  },
+  name: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  role: {
+    color: '#E5E7EB',
+    fontSize: 14,
+  },
+  subtle: {
+    color: '#9CA3AF',
+    fontSize: 12,
+  },
+  tagsRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+    marginTop: 6,
+  },
+  tag: {
+    borderRadius: 12,
+    paddingVertical: 2,
+    paddingHorizontal: 8,
+    backgroundColor: '#0B2942',
+    borderWidth: 1,
+    borderColor: '#1f3b5c',
+  },
+  tagText: {
+    color: '#94C2FF',
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  right: {
+    alignItems: 'flex-end',
+    gap: 10,
+  },
+  matchPill: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 999,
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    backgroundColor: '#0B2A21',
+    borderWidth: 1,
+    borderColor: '#124F3A',
+  },
+  matchText: {
+    color: '#34D399',
+    fontWeight: '800',
+    fontSize: 16,
+    lineHeight: 18,
+  },
+  matchSub: {
+    color: '#86efac',
+    fontSize: 10,
+    marginTop: 2,
+  },
+  connectBtn: {
+    backgroundColor: '#3B82F6',
+    borderRadius: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+  },
+  connectText: {
+    color: 'white',
+    fontWeight: '700',
+    fontSize: 13,
+  },
+  description: {
+    fontSize: 16,
+    color: 'white',
+    fontWeight: '400',
+    lineHeight: 22,
+    flexShrink: 1,
+    marginBottom: 4,
+  },
 });
 
 export default EmployerHome;
