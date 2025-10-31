@@ -1,4 +1,10 @@
-import { View, Image, Text, Dimensions, ImageSourcePropType } from 'react-native';
+import {
+  View,
+  Image,
+  Text,
+  Dimensions,
+  ImageSourcePropType,
+} from 'react-native';
 import { posts } from '../auth/utils/PostCard';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useEffect } from 'react';
@@ -10,6 +16,7 @@ type Post = {
   // Local avatar support
   avatar?: ImageSourcePropType;
   statusText: string;
+  hastag?: string;
   // Remote photo support
   photoUrl?: string;
   // Local photo support
@@ -22,9 +29,25 @@ type Post = {
 
 const screenWidth = Dimensions.get('window').width;
 
-
 const HomePostCard = ({ post }: { post: Post }) => {
+  const renderStatusText = (text: string) => {
+    const parts = text.split(/(https?:\/\/[^\s]+)/g); // split text by URL
+    return parts.map((part, index) =>
+      part.match(/https?:\/\/[^\s]+/) ? (
+        <Text key={index} style={{ color: '#1e80e9ff', fontWeight: 'bold' }}>
+          {part}
+        </Text>
+      ) : (
+        <Text key={index} style={{ color: '#222' }}>
+          {part}
+        </Text>
+      ),
+    );
+  };
 
+  const hastagText = (text: string) => {
+    return <Text style={{ color: '#1e80e9ff', fontWeight: 'bold' }}>{text}</Text>;
+  };
 
   const isLocalPhoto = !!post.photo;
   const localPhotoMeta = post.photo
@@ -73,7 +96,7 @@ const HomePostCard = ({ post }: { post: Post }) => {
           </View>
         </View>
 
-        <Ionicons name="ellipsis-horizontal" size={18} color="#444" />
+        <Text style={{fontSize: 18, color: '#0d73dfff', fontWeight: '600', textAlign: 'center'}}>+ Follow</Text>
       </View>
 
       {/** status */}
@@ -85,7 +108,17 @@ const HomePostCard = ({ post }: { post: Post }) => {
           paddingHorizontal: 2,
         }}
       >
-        {post.statusText}
+        {renderStatusText(post.statusText)}
+      
+      </Text>
+      <Text  
+       style={{
+          fontSize: 16,
+          color: '#222',
+          marginBottom: 10,
+          paddingHorizontal: 2,
+        }}>
+          {hastagText(post.hastag ?? '')}
       </Text>
       {(post.photo || post.photoUrl) && (
         <Image
