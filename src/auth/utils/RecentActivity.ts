@@ -1,0 +1,67 @@
+export const recentActivities = [
+  {
+    id: 1,
+    type: 'application',
+    avatarUrl: 'https://randomuser.me/api/portraits/women/44.jpg',
+    description: 'Jane Doe applied for AI Engineer.',
+    actionText: 'View',
+    time: '2h ago',
+  },
+  {
+    id: 2,
+    type: 'ai-match',
+    name: 'AI Match',
+    avatarUrl: 'https://cdn-icons-png.flaticon.com/512/1087/1087815.png', 
+    description: 'New AI Match for Backend Developer role.',
+    actionText: 'Review',
+    time: 'Yesterday',
+  },
+  {
+    id: 3,
+    type: 'application',
+    name: '',
+    avatarUrl: 'https://randomuser.me/api/portraits/men/32.jpg',
+    description: 'John Smith applied for Software Engineer.',
+    actionText: 'View',
+    time: '3 days ago',
+  },
+  {
+    id: 4,
+    type: 'ai-match',
+    name: 'AI Match',
+    avatarUrl: 'https://cdn-icons-png.flaticon.com/512/1087/1087815.png',
+    description: 'New AI Match for Cloud Engineer role.',
+    actionText: 'Review',
+    time: '3 days ago',
+  },
+];
+
+export const topCandidates = [
+  {
+    id: '1',
+    name: 'Aria Montgomery',
+    role: 'AI Engineer',
+    location: 'Albuquerque, NM',
+    match: 100,
+    avatarUrl: 'https://randomuser.me/api/portraits/women/68.jpg', 
+    tags: ['Python', 'TensorFlow', 'NLP', 'PyTorch'],
+  },
+  {
+    id: '2',
+    name: 'Ken Alvarez',
+    role: 'Machine Learning Engineer',
+    location: 'Albuquerque, NM',
+    match: 97,
+    avatarUrl: 'https://randomuser.me/api/portraits/men/79.jpg', 
+    tags: ['Scikit-learn', 'Pandas', 'Data Viz'],
+  },
+  {
+    id: '3',
+    name: 'Hanna Marin',
+    role: 'Software Engineer',
+    location: 'Albuquerque, NM',
+    match: 95,
+    avatarUrl: 'https://randomuser.me/api/portraits/women/65.jpg',
+    tags: ['Python', 'Research', 'Algorithms'],
+  },
+];
