@@ -33,7 +33,7 @@ export const jobs: Job[] = [
       'Protect mission-critical systems by implementing secure coding practices, conducting vulnerability assessments, and automating security checks. Work with senior engineers to harden services, monitor threats, and document remediation steps.',
     postedAt: '2025-10-24T18:22:00.000Z',
     location: 'Albuquerque, NM',
-    employmentType: 'Internship',
+    employmentType: 'Full-time',
     numOfEmployees: '10000+',
     minRequirements: [
       'Security, networks, or OS coursework',
