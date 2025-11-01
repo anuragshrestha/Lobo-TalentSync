@@ -12,9 +12,12 @@ import {
   recentActivities,
   topCandidates,
 } from '../../auth/utils/RecentActivity';
+import { useNavigation } from '@react-navigation/native';
 
 const EmployerHome = () => {
   const [isRecentActivity, setIsRecentActivity] = useState(true);
+  const navigation = useNavigation<any>();
+
 
   return (
     <ScrollView contentContainerStyle={style.container}>
@@ -26,7 +29,7 @@ const EmployerHome = () => {
       </View>
 
       {/* New job button */}
-      <Pressable style={style.postJobButton}>
+      <Pressable style={style.postJobButton} onPress={() => navigation.navigate('CreateNewJob')}>
         <Text style={[style.postJobText, { fontSize: 22 }]}>+</Text>
         <Text style={[style.postJobText, { fontSize: 19 }]}>
           Post a New Job

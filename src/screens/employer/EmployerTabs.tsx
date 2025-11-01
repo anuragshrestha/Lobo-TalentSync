@@ -28,7 +28,7 @@ const FocusAwareStatusBar = ({ backgroundColor, barStyle }: { backgroundColor: s
   return <StatusBar backgroundColor={backgroundColor} barStyle={barStyle} />;
 };
 
-const ScreenWrapper = ({ children, bg = BG }: { children: React.ReactNode; bg?: string }) => (
+export const ScreenWrapper = ({ children, bg = BG }: { children: React.ReactNode; bg?: string }) => (
   <SafeAreaView style={{ flex: 1, backgroundColor: bg }}>
     <FocusAwareStatusBar backgroundColor={bg} barStyle={getBarStyle(bg)} />
     <View style={{ flex: 1, backgroundColor: bg }}>{children}</View>
