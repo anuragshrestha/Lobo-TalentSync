@@ -54,7 +54,9 @@ const CreateNewJob = () => {
 
         {/* Job Title */}
         <View style={{ paddingTop: 15 }}>
-          <Text style={{ fontSize: 18, color: 'gray' }}>Job Title</Text>
+          <Text style={{ fontSize: 18, color: '#ccc8c8ff', fontWeight: '500' }}>
+            Job Title
+          </Text>
           <TextInput
             placeholder="e.g. Software Engineer"
             style={styles.jobInput}
@@ -64,7 +66,9 @@ const CreateNewJob = () => {
 
         {/* Department/Team */}
         <View style={{ paddingTop: 15 }}>
-          <Text style={{ fontSize: 18, color: 'gray' }}>Department/Team</Text>
+          <Text style={{ fontSize: 18, color: '#ccc8c8ff', fontWeight: '500' }}>
+            Department/Team
+          </Text>
 
           {/* Trigger */}
           <Pressable
@@ -121,16 +125,110 @@ const CreateNewJob = () => {
         {/**Location */}
         <Text style={styles.sectionTitle}>Location</Text>
         <View style={styles.locationView}>
-          <Pressable onPress={() => setLocation('On-site')} style={[location === 'On-site' && styles.option]}>
-            <Text style={[styles.locationText, location === 'On-site' && styles.activeLocationText]}> On-site</Text>
+          <Pressable
+            onPress={() => setLocation('On-site')}
+            style={[location === 'On-site' && styles.option]}
+          >
+            <Text
+              style={[
+                styles.locationText,
+                location === 'On-site' && styles.activeLocationText,
+              ]}
+            >
+              {' '}
+              On-site
+            </Text>
           </Pressable>
-          <Pressable onPress={() => setLocation('Hybrid')} style={[location === 'Hybrid' && styles.option]}>
-            <Text style={[styles.locationText, location === 'Hybrid' && styles.activeLocationText]}>Hybrid</Text>
+          <Pressable
+            onPress={() => setLocation('Hybrid')}
+            style={[location === 'Hybrid' && styles.option]}
+          >
+            <Text
+              style={[
+                styles.locationText,
+                location === 'Hybrid' && styles.activeLocationText,
+              ]}
+            >
+              Hybrid
+            </Text>
           </Pressable>
-          <Pressable onPress={() => setLocation('Remote')} style={[location === 'Remote' && styles.option]}>
-            <Text style={[styles.locationText, location === 'Remote' && styles.activeLocationText]}>Remote</Text>
+          <Pressable
+            onPress={() => setLocation('Remote')}
+            style={[location === 'Remote' && styles.option]}
+          >
+            <Text
+              style={[
+                styles.locationText,
+                location === 'Remote' && styles.activeLocationText,
+              ]}
+            >
+              Remote
+            </Text>
           </Pressable>
         </View>
+
+        {/**Job Specifics */}
+        <Text style={styles.sectionTitle}>Job Specifics</Text>
+        <Text
+          style={{
+            fontSize: 16,
+            color: '#ccc8c8ff',
+            fontWeight: '500',
+            paddingTop: 10,
+          }}
+        >
+          Employment Type
+        </Text>
+        <Pressable style={styles.selectTrigger}>
+          <Text style={[styles.selectText, { color: PLACEHOLDER }]}>
+            Full-time
+          </Text>
+          <Ionicons name="chevron-down" size={22} color="white" />
+        </Pressable>
+        {/**Experience Level */}
+        <Text
+          style={{
+            fontSize: 16,
+            color: '#ccc8c8ff',
+            fontWeight: '500',
+            paddingTop: 10,
+          }}
+        >
+          Experience Level
+        </Text>
+        <Pressable style={styles.selectTrigger}>
+          <Text style={[styles.selectText, { color: PLACEHOLDER }]}>
+            Entry Level
+          </Text>
+          <Ionicons name="chevron-down" size={22} color="white" />
+        </Pressable>
+        {/**Description Section */}
+        <View style={styles.descriptionView}>
+          <Text style={styles.sectionTitle2}>Description</Text>
+          <View style={styles.aiAssistView}>
+            <Ionicons name="sparkles-outline" size={18} color="#085fbdff" />
+            <Text style={styles.aiAssistText}>AI Assist</Text>
+          </View>
+        </View>
+        <TextInput
+          placeholder="Describe the job responsibilities, qualifications, and culture... "
+          numberOfLines={2}
+          multiline={true}
+          placeholderTextColor="#9a9898"
+          style={{
+            borderWidth: 1,
+            fontSize: 16,
+            paddingVertical: 30,
+            borderRadius: 12,
+            borderColor: '#514f4fff',
+            paddingHorizontal: 10,
+            color: 'white',
+            textAlignVertical: 'top',
+            marginTop: 10
+          }}
+        >
+
+        </TextInput>
       </View>
     </ScrollView>
   );
@@ -166,6 +264,11 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '700',
     paddingTop: 20,
+    color: DEFAULT_TEXT_COLOR,
+  },
+  sectionTitle2: {
+    fontSize: 22,
+    fontWeight: '700',
     color: DEFAULT_TEXT_COLOR,
   },
   jobInput: {
@@ -239,20 +342,42 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   locationText: {
-     fontSize: 16,
-      fontWeight: '500',
-      color: '#9a9898ff',
-     },
-     activeLocationText:{
-        color:'white',
-     },
-     option:{
-        borderWidth: 1,
-        backgroundColor: '#050f29ff',
-        borderColor:'#514f4fff',
-        borderRadius: 10,
-        paddingVertical: 8,
-        paddingHorizontal: 10,
-        alignItems: 'center',
-     }
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#9a9898ff',
+  },
+  activeLocationText: {
+    color: 'white',
+  },
+  option: {
+    borderWidth: 1,
+    backgroundColor: '#050f29ff',
+    borderColor: '#514f4fff',
+    borderRadius: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+    alignItems: 'center',
+  },
+  aiAssistView: {
+    alignItems: 'center',
+    borderRadius: 16,
+    backgroundColor: 'rgba(3, 42, 84, 1)',
+    justifyContent: 'center',
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+    flexDirection: 'row',
+  },
+  descriptionView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: '42%',
+    paddingTop: 20,
+  },
+  aiAssistText: {
+    textAlign: 'center',
+    color: '#085fbdff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
 });
