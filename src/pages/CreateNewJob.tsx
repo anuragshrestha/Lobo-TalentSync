@@ -1,7 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import {
-  Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View
+  Platform,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -21,13 +27,19 @@ const CreateNewJob = () => {
   const navigation = useNavigation();
   const [dept, setDept] = useState<string>('');
   const [open, setOpen] = useState(false);
+  const [location, setLocation] = useState<
+    '' | 'On-site' | 'Hybrid' | 'Remote'
+  >('On-site');
 
   const selectedLabel = dept
     ? DEPTS.find(d => d.value === dept)?.label
     : 'Select a department';
 
   return (
-    <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
+    <ScrollView
+      contentContainerStyle={styles.container}
+      keyboardShouldPersistTaps="handled"
+    >
       <View style={{ width: '100%' }}>
         {/* Header */}
         <View style={styles.headerRow}>
@@ -78,7 +90,10 @@ const CreateNewJob = () => {
           {/* Dropdown menu */}
           {open && (
             <>
-              <Pressable style={styles.backdrop} onPress={() => setOpen(false)} />
+              <Pressable
+                style={styles.backdrop}
+                onPress={() => setOpen(false)}
+              />
 
               <View style={styles.menu}>
                 <ScrollView style={{ maxHeight: 220 }} bounces={false}>
@@ -102,6 +117,20 @@ const CreateNewJob = () => {
             </>
           )}
         </View>
+
+        {/**Location */}
+        <Text style={styles.sectionTitle}>Location</Text>
+        <View style={styles.locationView}>
+          <Pressable onPress={() => setLocation('On-site')} style={[location === 'On-site' && styles.option]}>
+            <Text style={[styles.locationText, location === 'On-site' && styles.activeLocationText]}> On-site</Text>
+          </Pressable>
+          <Pressable onPress={() => setLocation('Hybrid')} style={[location === 'Hybrid' && styles.option]}>
+            <Text style={[styles.locationText, location === 'Hybrid' && styles.activeLocationText]}>Hybrid</Text>
+          </Pressable>
+          <Pressable onPress={() => setLocation('Remote')} style={[location === 'Remote' && styles.option]}>
+            <Text style={[styles.locationText, location === 'Remote' && styles.activeLocationText]}>Remote</Text>
+          </Pressable>
+        </View>
       </View>
     </ScrollView>
   );
@@ -120,7 +149,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingTop: '12%',
-    gap: 20,
+    gap: '25%',
   },
   headerTitle: {
     fontSize: 18,
@@ -143,7 +172,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     borderWidth: 1,
     borderColor: 'gray',
-    paddingVertical: 10,
+    paddingVertical: 13,
     paddingHorizontal: 12,
     marginTop: 5,
     fontSize: 16,
@@ -161,7 +190,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    zIndex: 10, 
+    zIndex: 10,
   },
   selectText: {
     fontSize: 16,
@@ -189,7 +218,41 @@ const styles = StyleSheet.create({
   },
   backdrop: {
     ...StyleSheet.absoluteFillObject,
-    top: 0, left: 0, right: 0, bottom: 0,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
     zIndex: 15,
   },
+  locationView: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    gap: '22%',
+    paddingTop: 10,
+    borderRadius: 12,
+    borderWidth: 1,
+    backgroundColor: '#202f54ff',
+    borderColor: '#514f4fff',
+    paddingVertical: 10,
+    paddingHorizontal: 5,
+    marginTop: 10,
+  },
+  locationText: {
+     fontSize: 16,
+      fontWeight: '500',
+      color: '#9a9898ff',
+     },
+     activeLocationText:{
+        color:'white',
+     },
+     option:{
+        borderWidth: 1,
+        backgroundColor: '#050f29ff',
+        borderColor:'#514f4fff',
+        borderRadius: 10,
+        paddingVertical: 8,
+        paddingHorizontal: 10,
+        alignItems: 'center',
+     }
 });
