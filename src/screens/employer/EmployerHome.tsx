@@ -11,7 +11,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   recentActivities,
   topCandidates,
-} from '../../auth/utils/RecentActivity';
+} from '../../utils/RecentActivity';
 import { useNavigation } from '@react-navigation/native';
 
 const EmployerHome = () => {

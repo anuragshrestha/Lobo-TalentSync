@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { jobs } from '../../auth/utils/JobCard';
+import { jobs } from '../../utils/JobCard';
 import JobDetailScreen from '../../components/JobDetailCard';
 
 const StudentJob = () => {

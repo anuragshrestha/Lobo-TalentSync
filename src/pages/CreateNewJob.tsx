@@ -8,7 +8,9 @@ import {
   Text,
   TextInput,
   View,
+  StatusBar,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const DEFAULT_TEXT_COLOR = '#e9e6e6ff';
@@ -36,10 +38,15 @@ const CreateNewJob = () => {
     : 'Select a department';
 
   return (
-    <ScrollView
-      contentContainerStyle={styles.container}
-      keyboardShouldPersistTaps="handled"
-    >
+    <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
+      <StatusBar backgroundColor="#0F172A" barStyle="light-content" />
+      <ScrollView
+        style={styles.scroll}
+        contentContainerStyle={styles.container}
+        keyboardShouldPersistTaps="handled"
+        bounces={false}
+        overScrollMode="never"
+      >
       <View style={{ width: '100%' }}>
         {/* Header */}
         <View style={styles.headerRow}>
@@ -215,38 +222,48 @@ const CreateNewJob = () => {
           numberOfLines={2}
           multiline={true}
           placeholderTextColor="#9a9898"
-          style={{
-            borderWidth: 1,
-            fontSize: 16,
-            paddingVertical: 30,
-            borderRadius: 12,
-            borderColor: '#514f4fff',
-            paddingHorizontal: 10,
-            color: 'white',
-            textAlignVertical: 'top',
-            marginTop: 10
-          }}
-        >
-
-        </TextInput>
+          style={styles.jobDescriptionInput}
+        ></TextInput>
+        <Pressable style={styles.publishJobView}>
+          <Text
+            style={{
+              fontSize: 16,
+              color: '#fff',
+              fontWeight: '600',
+              textAlign: 'center',
+            }}
+          >
+            Publish Job
+          </Text>
+        </Pressable>
+        <Pressable style={{minWidth: '90%', alignItems: 'center', marginTop: 10, marginBottom: 50}}>
+          <Text style={{fontSize: 16, fontWeight: '500', color: '#25a4edff'}}>Save as Draft</Text>
+        </Pressable>
       </View>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 export default CreateNewJob;
 
 const styles = StyleSheet.create({
+  safe: {
+    flex: 1,
+    backgroundColor: '#0F172A',
+  },
+  scroll: {
+    flex: 1,
+    backgroundColor: '#0F172A',
+  },
   container: {
     flexGrow: 1,
     padding: 10,
-    backgroundColor: '#0F172A',
     width: '100%',
   },
   headerRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: '12%',
     gap: '25%',
   },
   headerTitle: {
@@ -379,5 +396,25 @@ const styles = StyleSheet.create({
     color: '#085fbdff',
     fontSize: 16,
     fontWeight: '600',
+  },
+  jobDescriptionInput: {
+    borderWidth: 1,
+    fontSize: 16,
+    paddingVertical: 40,
+    borderRadius: 12,
+    borderColor: '#514f4fff',
+    paddingHorizontal: 10,
+    color: 'white',
+    textAlignVertical: 'top',
+    marginTop: 10,
+  },
+  publishJobView: {
+    paddingVertical: 8,
+    paddingHorizontal: 4,
+    minWidth: '90%',
+    borderRadius: 16,
+    backgroundColor: '#202f54ff',
+    alignItems: 'center',
+    marginTop: 10,
   },
 });
