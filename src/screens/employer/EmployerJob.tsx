@@ -127,7 +127,7 @@ const EmployerJob = () => {
                   {(j.applicants ?? 0)} Applicants
                 </Text>
                 <View style={styles.actionsRow}>
-                  <Pressable style={styles.primaryBtn} onPress={() => navigation.navigate('EmployerCandidates')} hitSlop={8}>
+                  <Pressable style={styles.primaryBtn} onPress={() => navigation.navigate('Candidates')} hitSlop={8}>
                     <Text style={styles.primaryBtnText}>View Applicants</Text>
                   </Pressable>
                   <Pressable style={styles.secondaryBtn} onPress={() => navigation.navigate('CreateNewJob')} hitSlop={8}>

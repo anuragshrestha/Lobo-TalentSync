@@ -77,7 +77,7 @@ export const jobs: Job[] = [
     location: 'Hillsboro, OR',
     employmentType: 'Full-time',
     numOfEmployees: '10000+',
-    status: 'Paused',
+    status: 'Inactive',
     applicants: 23,
     minRequirements: [
       'Python + PyTorch/TensorFlow',

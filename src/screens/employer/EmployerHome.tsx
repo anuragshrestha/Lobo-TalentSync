@@ -46,13 +46,13 @@ const EmployerHome = () => {
       {/*Active Jobs */}
       <View style={style.activeJobsView}>
         <Text style={style.activeJobText}>Active Jobs</Text>
-        <Text style={style.jobNumber}> 12</Text>
+        <Text style={style.jobNumber}> 5</Text>
         <Text style={style.jobViewAll}>View All</Text>
       </View>
       {/*New Applications Section*/}
       <View style={style.activeJobsView}>
         <Text style={style.activeJobText}>New Applications</Text>
-        <Text style={style.jobNumber}> 20</Text>
+        <Text style={style.jobNumber}> 46</Text>
         <Text style={style.jobViewAll}>Review Now</Text>
       </View>
       {/* Recent Activity and Top Candidates */}
