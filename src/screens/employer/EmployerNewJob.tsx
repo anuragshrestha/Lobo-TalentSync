@@ -25,7 +25,7 @@ const DEPTS = [
   { label: 'Sales', value: 'sales' },
 ];
 
-const CreateNewJob = () => {
+const EmployerNewJob = () => {
   const navigation = useNavigation();
   const [dept, setDept] = useState<string>('');
   const [open, setOpen] = useState(false);
@@ -38,8 +38,6 @@ const CreateNewJob = () => {
     : 'Select a department';
 
   return (
-    <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
-      <StatusBar backgroundColor="#0F172A" barStyle="light-content" />
       <ScrollView
         style={styles.scroll}
         contentContainerStyle={styles.container}
@@ -50,9 +48,6 @@ const CreateNewJob = () => {
       <View style={{ width: '100%' }}>
         {/* Header */}
         <View style={styles.headerRow}>
-          <Pressable onPress={() => navigation.goBack()}>
-            <Ionicons name="arrow-back" size={22} color="gray" />
-          </Pressable>
           <Text style={styles.headerTitle}>Create a New Job</Text>
         </View>
         <View style={styles.divider} />
@@ -241,11 +236,10 @@ const CreateNewJob = () => {
         </Pressable>
       </View>
       </ScrollView>
-    </SafeAreaView>
   );
 };
 
-export default CreateNewJob;
+export default EmployerNewJob;
 
 const styles = StyleSheet.create({
   safe: {
@@ -264,6 +258,7 @@ const styles = StyleSheet.create({
   headerRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     gap: '25%',
   },
   headerTitle: {

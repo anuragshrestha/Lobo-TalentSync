@@ -29,20 +29,20 @@ const EmployerHome = () => {
       </View>
 
       {/* New job button */}
-      <Pressable style={style.postJobButton} onPress={() => navigation.navigate('CreateNewJob')}>
+      {/* <Pressable style={style.postJobButton} onPress={() => navigation.navigate('CreateNewJob')}>
         <Text style={[style.postJobText, { fontSize: 22 }]}>+</Text>
         <Text style={[style.postJobText, { fontSize: 19 }]}>
           Post a New Job
         </Text>
-      </Pressable>
+      </Pressable> */}
       {/** AI Matches */}
-      <Pressable style={style.aiMatches}>
+      {/* <Pressable style={style.aiMatches} onPress={() => navigation.navigate('AIMatches')}>
         <Ionicons name="bulb-outline" size={22} color="white" />
         <Text style={{ fontSize: 18, fontWeight: '600', color: 'white' }}>
           {' '}
           View AI Matches
         </Text>
-      </Pressable>
+      </Pressable> */}
       {/*Active Jobs */}
       <View style={style.activeJobsView}>
         <Text style={style.activeJobText}>Active Jobs</Text>
