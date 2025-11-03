@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
-import { AppliedJobs } from '../../auth/utils/JobCard';
+import { AppliedJobs } from '../../utils/JobCard';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const StudentHistory = () => {

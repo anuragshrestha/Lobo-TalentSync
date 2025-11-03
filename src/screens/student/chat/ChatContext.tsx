@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useMemo, useState } from 'react';
-import { ChatMessage, ChatThread, initialThreads } from '../../../auth/utils/ChatData';
+import { ChatMessage, ChatThread, initialThreads } from '../../../utils/ChatData';
 
 type ChatContextType = {
   threads: ChatThread[];

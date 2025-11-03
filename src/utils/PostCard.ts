@@ -5,7 +5,7 @@ export const posts = [
     statusText:
       'Ready to advance your IT career? Sandia Labs is looking for driven new Graduate Students to join our award-winning team. Discover opportunities in Cybersecurity and Software engineering. \n\nVisit https://cg.sandia.gov/careers to learn more and apply today!',
     hastag: '#SandiaNationalLab #ABQBestPlacestoWork #TechCareers #Networking #ITJobs',
-      photo: require('../../assests/images/sandiaHiring.png'),
+      photo: require('../assests/images/sandiaHiring.png'),
     likes: 128,
     comments: 12,
     shares: 4,
@@ -17,7 +17,7 @@ export const posts = [
     statusText:
       'Los Alamos Lab is Hiring! \n\nCheck out our careers page and apply today: https://www.lanl.gov/careers',
     hastag: '#LosAlamosLab #hiring #ABQBestPlacestoWork #Jobs',
-    photo: require('../../assests/images/losAlamosHiring.png'),
+    photo: require('../assests/images/losAlamosHiring.png'),
     likes: 86,
     comments: 7,
     shares: 2,
@@ -29,7 +29,7 @@ export const posts = [
     statusText:
       'Intel is coming to UNM for Hiring next week. \nCome and join us at UNM SUB Ballroom.',
           hastag: '#UNMCareerFair #TechJobs #Networking #Hiring',
-    photo: require('../../assests/images/intelHiring.png'),
+    photo: require('../assests/images/intelHiring.png'),
     likes: 204,
     comments: 18,
     shares: 6,
@@ -63,7 +63,7 @@ export const posts = [
     name: 'Sandia National Lab',
     avatarUrl: 'https://logo.clearbit.com/sandia.gov',
     statusText: 'Now hiring interns in Software and systems engineering.',
-    photo: require('../../assests/images/sandiaNewHiring.png'),
+    photo: require('../assests/images/sandiaNewHiring.png'),
     likes: 128,
     comments: 12,
     shares: 4,

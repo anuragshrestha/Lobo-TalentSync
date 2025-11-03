@@ -11,10 +11,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   recentActivities,
   topCandidates,
-} from '../../auth/utils/RecentActivity';
+} from '../../utils/RecentActivity';
+import { useNavigation } from '@react-navigation/native';
 
 const EmployerHome = () => {
   const [isRecentActivity, setIsRecentActivity] = useState(true);
+  const navigation = useNavigation<any>();
+
 
   return (
     <ScrollView contentContainerStyle={style.container}>
@@ -26,30 +29,30 @@ const EmployerHome = () => {
       </View>
 
       {/* New job button */}
-      <Pressable style={style.postJobButton}>
+      {/* <Pressable style={style.postJobButton} onPress={() => navigation.navigate('CreateNewJob')}>
         <Text style={[style.postJobText, { fontSize: 22 }]}>+</Text>
         <Text style={[style.postJobText, { fontSize: 19 }]}>
           Post a New Job
         </Text>
-      </Pressable>
+      </Pressable> */}
       {/** AI Matches */}
-      <Pressable style={style.aiMatches}>
+      {/* <Pressable style={style.aiMatches} onPress={() => navigation.navigate('AIMatches')}>
         <Ionicons name="bulb-outline" size={22} color="white" />
         <Text style={{ fontSize: 18, fontWeight: '600', color: 'white' }}>
           {' '}
           View AI Matches
         </Text>
-      </Pressable>
+      </Pressable> */}
       {/*Active Jobs */}
       <View style={style.activeJobsView}>
         <Text style={style.activeJobText}>Active Jobs</Text>
-        <Text style={style.jobNumber}> 12</Text>
+        <Text style={style.jobNumber}> 5</Text>
         <Text style={style.jobViewAll}>View All</Text>
       </View>
       {/*New Applications Section*/}
       <View style={style.activeJobsView}>
         <Text style={style.activeJobText}>New Applications</Text>
-        <Text style={style.jobNumber}> 20</Text>
+        <Text style={style.jobNumber}> 46</Text>
         <Text style={style.jobViewAll}>Review Now</Text>
       </View>
       {/* Recent Activity and Top Candidates */}

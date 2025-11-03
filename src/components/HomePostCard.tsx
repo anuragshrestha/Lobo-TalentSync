@@ -5,7 +5,7 @@ import {
   Dimensions,
   ImageSourcePropType,
 } from 'react-native';
-import { posts } from '../auth/utils/PostCard';
+import { posts } from '../utils/PostCard';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useEffect } from 'react';
 

@@ -11,7 +11,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { Job } from '../auth//utils/JobCard';
+import { Job } from '../utils/JobCard';
 
 const screenWidth = Dimensions.get('window').width;
 

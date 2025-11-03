@@ -27,7 +27,11 @@ const ConversationHeaderTitle = ({ threadId }: { threadId: string }) => {
 const StudentChat = () => {
   return (
     <ChatProvider>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{  
+          headerBackButtonDisplayMode: 'minimal',
+        }}
+      >
         <Stack.Screen name="ChatInbox" component={ChatInbox} options={{ title: 'Messages' }} />
         <Stack.Screen
           name="ChatConversation"

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { posts } from '../../auth/utils/PostCard';
+import { posts } from '../../utils/PostCard';
 import HomePostCard from '../../components/HomePostCard';
 
 const StudentHome = () => {
