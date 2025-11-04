@@ -10,6 +10,7 @@ import {
   FlatList,
   Modal,
   Pressable,
+  ScrollView,
 } from 'react-native';
 
 const EmployerSignUp = () => {
@@ -55,7 +56,11 @@ const EmployerSignUp = () => {
 
   const navigation = useNavigation<any>();
   return (
-    <View style={styles.container}>
+    <ScrollView
+      contentContainerStyle={styles.container}
+      keyboardShouldPersistTaps="handled"
+      scrollEnabled={!dropdownOpen}
+    >
       <Image
         source={require('../../assests/LoboImage.png')}
         style={styles.logo}
@@ -93,12 +98,14 @@ const EmployerSignUp = () => {
                 autoFocus
               />
               {filteredCompanies.length > 0 ? (
-                <FlatList
-                  data={filteredCompanies}
+                <ScrollView
                   keyboardShouldPersistTaps="handled"
-                  keyExtractor={item => item}
-                  renderItem={({ item }) => (
+                  nestedScrollEnabled
+                  style={{ maxHeight: 220 }}
+                >
+                  {filteredCompanies.map(item => (
                     <TouchableOpacity
+                      key={item}
                       style={styles.dropdownItem}
                       onPress={() => {
                         setCompanyName(item);
@@ -107,9 +114,8 @@ const EmployerSignUp = () => {
                     >
                       <Text style={styles.dropdownItemText}>{item}</Text>
                     </TouchableOpacity>
-                  )}
-                  style={{ maxHeight: 220 }}
-                />
+                  ))}
+                </ScrollView>
               ) : searchQuery.trim().length > 0 ? (
                 <TouchableOpacity
                   style={styles.dropdownItem}
@@ -195,7 +201,9 @@ const EmployerSignUp = () => {
         >
           <View style={styles.modalView}>
             <View style={styles.innerModalView}>
-              <Text style={styles.congratsText}>Congratulation for Creating Employer Account</Text>
+              <Text style={styles.congratsText}>
+                Congratulation for Creating Employer Account
+              </Text>
               <Text
                 style={{ fontSize: 14, fontWeight: '400', marginBottom: 5 }}
               >
@@ -240,7 +248,7 @@ const EmployerSignUp = () => {
           </View>
         </Modal>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -249,7 +257,7 @@ export default EmployerSignUp;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    flex: 1,
+    flexGrow: 1,
     paddingTop: '10%',
     backgroundColor: 'white',
   },

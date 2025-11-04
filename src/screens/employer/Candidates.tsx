@@ -275,7 +275,7 @@ const Candidates = () => {
         animationType="slide"
         onRequestClose={() => setShowResume(false)}
       >
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#0F172A', paddingTop: 0 }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#0F172A', paddingTop: 50 }}>
           <View
             style={{
               flexDirection: 'row',

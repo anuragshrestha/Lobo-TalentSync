@@ -70,7 +70,7 @@ const EmployerProfile = () => {
         <SettingsRow icon="card-outline" bg="#122a1d" text="Billing Information" />
       </View>
 
-      <Pressable style={styles.logoutBtn} onPress={() => navigation.navigate('EmployerSignin')}>
+      <Pressable style={styles.logoutBtn} onPress={() => navigation.navigate('Landing')}>
         <Text style={styles.logoutText}>Log Out</Text>
       </Pressable>
 

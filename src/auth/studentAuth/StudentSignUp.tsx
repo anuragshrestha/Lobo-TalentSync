@@ -8,6 +8,7 @@ import {
   Image,
   Touchable,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 
 const StudentSignUp = () => {
@@ -19,7 +20,7 @@ const StudentSignUp = () => {
 
   const navigation = useNavigation<any>();
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Image
         source={require('../../assests/LoboImage.png')}
         style={styles.logo}
@@ -94,7 +95,7 @@ const StudentSignUp = () => {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -103,7 +104,7 @@ export default StudentSignUp;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    flex: 1,
+    flexGrow: 1,
     paddingTop: '10%',
     backgroundColor: 'white',
   },
