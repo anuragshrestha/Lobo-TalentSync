@@ -10,6 +10,7 @@ import {
   Pressable,
   TextInput,
   Image,
+  Modal,
 } from 'react-native';
 import {
   SafeAreaView,
@@ -17,12 +18,14 @@ import {
 } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { applicants, candidates } from '../../utils/AIMatchesCandidates';
+import Pdf from 'react-native-pdf';
 
 const Candidates = () => {
   const [isApplicants, setIsApplicants] = useState(true);
   const [value, setValue] = useState('');
   const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
+  const [showResume, setShowResume] = useState(false);
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -241,7 +244,10 @@ const Candidates = () => {
                     ))}
                   </View>
                   <View style={styles.resumeChat}>
-                    <Pressable style={styles.viewResume}>
+                    <Pressable
+                      style={styles.viewResume}
+                      onPress={() => setShowResume(true)}
+                    >
                       <Ionicons
                         name="document-text-outline"
                         size={20}
@@ -264,6 +270,45 @@ const Candidates = () => {
           )}
         </View>
       </ScrollView>
+      <Modal
+        visible={showResume}
+        animationType="slide"
+        onRequestClose={() => setShowResume(false)}
+      >
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#0F172A' }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: 12,
+            }}
+          >
+            <Text style={{ color: '#fff', fontSize: 18, fontWeight: '600', paddingTop: 10 }}>
+              Candidate Resume
+            </Text>
+            <Pressable
+              onPress={() => setShowResume(false)}
+              style={{
+                paddingHorizontal: 12,
+                paddingVertical: 6,
+                borderRadius: 8,
+                backgroundColor: '#334155',
+              }}
+            >
+              <Text style={{ color: '#fff', fontSize: 16 }}>Cancel</Text>
+            </Pressable>
+          </View>
+
+          <Pdf
+            // Use the bundled resume PDF asset
+            source={require('../../assests/Resume.pdf')}
+            style={{ flex: 1 }}
+            trustAllCerts={false}
+            onError={e => console.warn('PDF error', e)}
+          />
+        </SafeAreaView>
+      </Modal>
     </SafeAreaView>
   );
 };
