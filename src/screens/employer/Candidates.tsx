@@ -275,7 +275,7 @@ const Candidates = () => {
         animationType="slide"
         onRequestClose={() => setShowResume(false)}
       >
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#0F172A' }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#0F172A', paddingTop: 0 }}>
           <View
             style={{
               flexDirection: 'row',
@@ -284,7 +284,7 @@ const Candidates = () => {
               padding: 12,
             }}
           >
-            <Text style={{ color: '#fff', fontSize: 18, fontWeight: '600', paddingTop: 10 }}>
+            <Text style={{ color: '#fff', fontSize: 18, fontWeight: '600'}}>
               Candidate Resume
             </Text>
             <Pressable
@@ -296,7 +296,7 @@ const Candidates = () => {
                 backgroundColor: '#334155',
               }}
             >
-              <Text style={{ color: '#fff', fontSize: 16 }}>Cancel</Text>
+              <Text style={{ color: '#fff', fontSize: 16}}>Cancel</Text>
             </Pressable>
           </View>
 
